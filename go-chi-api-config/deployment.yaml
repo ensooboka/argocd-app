@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argocd-app
+spec:
+  selector:
+    matchLabels:
+      app: argocd-app
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: argocd-app
+    spec:
+      containers:
+      - name: argocd-app
+        image: cmar82/go-chi-api:1.0.2
+        ports:
+        - containerPort: 8000
